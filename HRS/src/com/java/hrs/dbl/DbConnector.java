@@ -7,7 +7,7 @@ public class DbConnector {
 	public DbConnector() {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hms","root","password");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrs","root","password");
 			if(!connection.isClosed()) {
 				System.out.println("Sucessfully connected ...");
 			}

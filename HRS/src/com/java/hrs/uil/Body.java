@@ -15,6 +15,7 @@ import javax.swing.border.SoftBevelBorder;
 import com.java.hrs.uil.addHouses.HouseView;
 import com.java.hrs.uil.main.Footer;
 import com.java.hrs.uil.main.Header;
+import com.java.hrs.uil.rentHouse.SelectHouseView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,9 +50,9 @@ public class Body extends JPanel {
     }
     protected void BtnRentHouseAction(ActionEvent event) {
     	bodyPanel.setVisible(false);
-    	HouseView houseView = new HouseView();
-    	add(houseView);
-    	houseView.setVisible(true);
+    	SelectHouseView selectHouseView = new SelectHouseView();
+    	add(selectHouseView);
+    	selectHouseView.setVisible(true);
     }
     protected void BtnViewHouseAction(ActionEvent event) {
     	bodyPanel.setVisible(false);
@@ -132,6 +133,13 @@ public class Body extends JPanel {
 		btnRentHouse.setFont(new Font("SansSerif", Font.BOLD, 20));
 		btnRentHouse.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED, new Color(21, 39, 68), new Color(54,117,145), new Color(21,39,68), new Color(54,117,145)));
 		btnRentHouse.setBackground(new Color(21, 39, 68));
+		btnRentHouse.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				BtnRentHouseAction(e);
+			}
+		});
 		buttonPanel.add(btnRentHouse);
 		
 		Component verticalGlue_4 = Box.createVerticalGlue();
@@ -145,6 +153,13 @@ public class Body extends JPanel {
 		btnViewHouse.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		btnViewHouse.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED, new Color(21, 39, 68), new Color(54,117,145), new Color(21,39,68), new Color(54,117,145)));
 		btnViewHouse.setBackground(new Color(21, 39, 68));
+		btnViewHouse.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				BtnViewHouseAction(e);
+			}
+		});
 		buttonPanel.add(btnViewHouse);
 		
 		Component verticalGlue_4_1 = Box.createVerticalGlue();
@@ -158,6 +173,13 @@ public class Body extends JPanel {
 		btnViewTenant.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		btnViewTenant.setBorder(new SoftBevelBorder(SoftBevelBorder.RAISED, new Color(21, 39, 68), new Color(54,117,145), new Color(21,39,68), new Color(54,117,145)));
 		btnViewTenant.setBackground(new Color(21, 39, 68));
+		btnViewTenant.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				BtnViewHouseAction(e);
+			}
+		});
 		buttonPanel.add(btnViewTenant);
 		
 		Component horizontalGlue_1 = Box.createHorizontalGlue();

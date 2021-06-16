@@ -16,6 +16,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import com.java.hrs.bll.PriceRange;
+import com.java.hrs.bll.SizeRange;
+import com.java.hrs.dbl.DbHouseList;
+import com.java.hrs.dbl.DbPriceRange;
+import com.java.hrs.dbl.DbSizeRange;
 import com.java.hrs.uil.Body;
 import com.java.hrs.uil.addHouses.HouseView;
 
@@ -76,7 +80,7 @@ public class MainPanel extends javax.swing.JPanel {
 
     public MainPanel(){
         try {
-            image = ImageIO.read(new File("G:\\Eclips Work Space\\HRS\\src\\recources\\bg.png"));
+            image = ImageIO.read(new File("D:\\Eclipse Workspace\\HRS\\src\\recources\\bg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +113,8 @@ public class MainPanel extends javax.swing.JPanel {
 		});
         add(body);
         add(footer);
-        PriceRange priceRange = new PriceRange();
+        DbHouseList dbHouseList = new DbHouseList();
+        SizeRange sizeRange = new SizeRange();
         
         
     }

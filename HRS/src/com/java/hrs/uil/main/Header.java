@@ -43,7 +43,7 @@ public class Header extends JPanel {
         btnHeaderHomeIcon.setBackground(Color.getColor("red", 0));
         btnHeaderHomeIcon.setBorder(null);
         btnHeaderHomeIcon.setOpaque(false);
-        btnHeaderHomeIcon.setIcon(new ImageIcon("C:\\Users\\muham\\Downloads\\Home Icon.png"));
+        btnHeaderHomeIcon.setIcon(new ImageIcon("D:\\Eclipse Workspace\\HRS\\src\\recources\\Home Icon.png"));
         btnHeaderHomeIcon.setMaximumSize(new Dimension(50,50));
         btnHeaderHomeIcon.setPreferredSize(new Dimension(50,50));
         

@@ -1,57 +1,47 @@
-package com.java.hrs.uil.addHouses;
+package com.java.hrs.uil.rentHouse;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-import javax.swing.JFileChooser;
-
-import java.awt.Color;
-import java.awt.Component;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.java.hrs.bll.House;
-import com.java.hrs.bll.Owner;
 import com.java.hrs.bll.ResizeImage;
-import com.java.hrs.dbl.DbHouse;
-import com.java.hrs.dbl.DbOwner;
+import com.java.hrs.bll.Tenant;
+import com.java.hrs.dbl.DbTenant;
 import com.java.hrs.uil.FormValidation;
+import com.java.hrs.uil.addHouses.HouseView;
 import com.java.hrs.uil.main.Body;
 
-import javax.swing.border.EtchedBorder;
-import javax.swing.JButton;
-import javax.swing.border.MatteBorder;
+public class TenantView extends JPanel {
 
-public class OwnerView extends JPanel {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2019608160471686084L;
 	Dimension dimension = new Dimension();
 	Body bodyPanel = new Body();
 	private JTextField tfName;
 	private JTextField tfCnic;
-	private JTextField tfAddress;
 	public String filePath;
 	private JTextField tfContact;
 	private JPanel mainPanel;
 	/**
 	 * Create the panel.
 	 */
-	public OwnerView(House house) {
-		//dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	public TenantView() {
 		dimension.setSize(bodyPanel.getWidth(),bodyPanel.getHeight());
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -77,7 +67,7 @@ public class OwnerView extends JPanel {
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
 		titlePanel.add(horizontalGlue_4);
 		
-		JLabel lblTitle = new JLabel("ADD HOUSES");
+		JLabel lblTitle = new JLabel("ADD TENANT");
 		lblTitle.setFont(new Font("SansSerif", Font.BOLD, 24));
 		lblTitle.setForeground(Color.decode("#9DFDC7"));
 		lblTitle.setAlignmentX(0.5f);
@@ -86,7 +76,7 @@ public class OwnerView extends JPanel {
 		Component horizontalGlue_5 = Box.createHorizontalGlue();
 		titlePanel.add(horizontalGlue_5);
 		
-		JLabel lblSubTitle = new JLabel("Owner Info");
+		JLabel lblSubTitle = new JLabel("Tenant Info");
 		lblSubTitle.setOpaque(true);
 		lblSubTitle.setBorder(new MatteBorder(1, 1, 1, 1, Color.decode("#152744")));
 		lblSubTitle.setFont(new Font("SansSerif", Font.BOLD, 18));
@@ -198,19 +188,6 @@ public class OwnerView extends JPanel {
 		Component verticalGlue_4 = Box.createVerticalGlue();
 		panel_1.add(verticalGlue_4);
 		
-		tfAddress = new JTextField();
-		tfAddress.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		tfAddress.setBackground(Color.decode("#152744"));
-		tfAddress.setForeground(Color.decode("#9DFDC7"));
-		tfAddress.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(21, 39, 68), new Color(157, 253, 199)), "Address", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(157, 253, 199)));
-		tfAddress.setMinimumSize(new Dimension(1000, 100));
-		tfAddress.setMaximumSize(new Dimension(1000, 100));
-		tfAddress.setColumns(20);
-		panel_1.add(tfAddress);
-		
-		Component verticalGlue_5 = Box.createVerticalGlue();
-		panel_1.add(verticalGlue_5);
-		
 		JButton btnAdd = new JButton("ADD");
 		btnAdd.setFont(new Font("SansSerif", Font.BOLD, 16));
 		btnAdd.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -222,17 +199,15 @@ public class OwnerView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				FormValidation formValidation = new FormValidation();
-				if(formValidation.OwnerFormValidation(tfName, tfContact, tfCnic, tfAddress, filePath)) {
-					Owner owner = new Owner(tfName.getText(),tfContact.getText(),tfCnic.getText(),tfAddress.getText(),filePath);
-					DbHouse dbHouse = new DbHouse();
-					dbHouse.insert(house);
-					DbOwner dbOwner = new DbOwner();
-					dbOwner.insert(owner);
+				if(formValidation.TenantFormValidation(tfName, tfContact, tfCnic, filePath)) {
+					Tenant tenant = new Tenant(tfName.getText(),tfContact.getText(),tfCnic.getText(),filePath);
+					DbTenant dbTenant = new DbTenant();
+					dbTenant.insert(tenant);
 					JOptionPane optionPane = new JOptionPane();
-					optionPane.showMessageDialog(mainPanel, "House is Added");
-					btnAddHouseView();
-					}
-				}
+					optionPane.showMessageDialog(mainPanel, "Tenant is Added");
+					btnSelectHouseView();
+				}	
+			}
 		});
 		panel_1.add(btnAdd);
 		
@@ -241,12 +216,12 @@ public class OwnerView extends JPanel {
 		
 		Component verticalGlue_1 = Box.createVerticalGlue();
 		mainPanel.add(verticalGlue_1);
-
 	}
 	
-	private void btnAddHouseView() {
+	private void btnSelectHouseView() {
 		mainPanel.setVisible(false);
-    	HouseView houseView = new HouseView();
-    	add(houseView);
+    	SelectHouseView selectHouseView = new SelectHouseView();
+    	add(selectHouseView);
 	}
+
 }

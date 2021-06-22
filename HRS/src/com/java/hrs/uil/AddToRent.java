@@ -4,6 +4,9 @@ import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+
+import com.java.hrs.uil.main.Body;
+
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.FlowLayout;

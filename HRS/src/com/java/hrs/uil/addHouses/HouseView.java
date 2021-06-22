@@ -22,7 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.java.hrs.bll.House;
 import com.java.hrs.bll.ResizeImage;
 import com.java.hrs.uil.FormValidation;
-import com.java.hrs.uil.Body;
+import com.java.hrs.uil.main.Body;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;

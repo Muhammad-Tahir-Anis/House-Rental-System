@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import com.java.hrs.bll.House;
 import com.java.hrs.bll.Owner;
+import com.java.hrs.bll.Tenant;
 import com.java.hrs.dbl.DbHouse;
 import com.java.hrs.dbl.DbOwner;
 
@@ -15,6 +16,7 @@ public class FormValidation {
 	String regaxNumber = "[^0-9]";
 	House house;
 	Owner owner;
+	Tenant tenant;
 	DbHouse dbHouse = new DbHouse();
 	DbOwner dbOwner = new DbOwner();
 	public boolean HouseFormValidation(JTextField tfSize,JTextField tfRoom,JTextField tfBath,JTextField tfFloor,JTextField tfPrice,JTextField tfAddress,String imagePath) {
@@ -70,6 +72,26 @@ public class FormValidation {
 		else {
 			
 			owner = new Owner(tfName.getText(),tfContact.getText(),tfCnic.getText(),tfAddress.getText(),imagePath);
+			value = true;
+		}
+		return value;
+	}
+	public boolean TenantFormValidation(JTextField tfName,JTextField tfContact,JTextField tfCnic,String imagePath) {
+		boolean value;
+		if(tfName.getText().isEmpty() || !tfName.getText().matches(regaxAlphabat)) {
+			JOptionPane.showMessageDialog(tfName, "Enter Valid Owner Name");
+			value = false;
+		}
+		else if(tfContact.getText().isEmpty() || tfContact.getText().matches(regaxNumber)) {
+			JOptionPane.showMessageDialog(tfContact, "Enter Valid Contact No");
+			value = false;
+		}
+		else if(tfCnic.getText().isEmpty() || tfCnic.getText().matches(regaxNumber)) {
+			JOptionPane.showMessageDialog(tfCnic, "Enter Valid CNIC");
+			value = false;
+		}
+		else {
+			tenant = new Tenant(tfName.getText(),tfContact.getText(),tfCnic.getText(),imagePath);
 			value = true;
 		}
 		return value;

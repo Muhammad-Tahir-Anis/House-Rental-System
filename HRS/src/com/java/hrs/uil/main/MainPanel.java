@@ -17,11 +17,15 @@ import javax.swing.JPanel;
 
 import com.java.hrs.bll.PriceRange;
 import com.java.hrs.bll.SizeRange;
-import com.java.hrs.dbl.DbHouseList;
+import com.java.hrs.dbl.DbHouse;
+import com.java.hrs.dbl.DbHouses;
 import com.java.hrs.dbl.DbPriceRange;
 import com.java.hrs.dbl.DbSizeRange;
-import com.java.hrs.uil.Body;
 import com.java.hrs.uil.addHouses.HouseView;
+import com.java.hrs.uil.rentHouse.SelectHouseView;
+import com.java.hrs.uil.rentHouse.TenantView;
+import com.java.hrs.uil.viewHouse.ViewHouses;
+import com.java.hrs.uil.viewTenant.ViewTenants;
 
 
 public class MainPanel extends javax.swing.JPanel {
@@ -35,41 +39,44 @@ public class MainPanel extends javax.swing.JPanel {
     Header headerPanel = new Header();
     Footer footer = new Footer();
     Body body = new Body();
-    HouseView houseView = new HouseView();
-    JPanel view = houseView;
+    //JPanel view = houseView;
     private BufferedImage image;
     
     private void btnHomeAction(ActionEvent event) {
     	this.remove(1);
+    	body.removeAll();
+    	body.add(body.bodyPanel);
 		this.add(body,1);
-		body.removeAll();
-		body.add(body.bodyPanel);
 		this.revalidate();
 	}
     
     private void comboBoxAction(int index) {
     	switch (index) {
 		case 0: {
+		    HouseView houseView = new HouseView();
 			this.remove(1);
 			this.add(houseView,1);
 			this.revalidate();
 			break;
 		}
 		case 1: {
+		    SelectHouseView selectHouseView = new SelectHouseView();
 			this.remove(1);
-			this.add(body,1);
+			this.add(selectHouseView,1);
 			this.revalidate();
 			break;
 		}
 		case 2: {
+			ViewHouses viewHouses = new ViewHouses();
 			this.remove(1);
-			this.add(houseView,1);
+			this.add(viewHouses,1);
 			this.revalidate();
 			break;
 		}
 		case 3: {
+		    ViewTenants viewTenants = new ViewTenants();
 			this.remove(1);
-			this.add(houseView,1);
+			this.add(viewTenants,1);
 			this.revalidate();
 			break;
 		}
@@ -94,7 +101,7 @@ public class MainPanel extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(MPdimension);
         
-        
+        // Adding header//
         add(headerPanel);
         
         headerPanel.btnHeaderHomeIcon.addActionListener(new ActionListener() {
@@ -113,9 +120,8 @@ public class MainPanel extends javax.swing.JPanel {
 		});
         add(body);
         add(footer);
-        DbHouseList dbHouseList = new DbHouseList();
-        SizeRange sizeRange = new SizeRange();
-        
+        //SizeRange sizeRange = new SizeRange();
+        //DbHouses dbHouses = new DbHouses();
         
     }
 

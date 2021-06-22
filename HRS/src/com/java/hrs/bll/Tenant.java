@@ -1,14 +1,22 @@
 package com.java.hrs.bll;
 
 public class Tenant {
-	String name,status;
-	long contactNumber,cnic;
-	int age;
-	public Tenant(String name,String status,String contactNumber,String cinic,String age) {
+	String name,imagePath;
+	long contact,cnic;
+	
+	public Tenant(String name,String conatct,String cnic,String imagePath) {
 		this.name = name;
-		this.status = status;
-		this.contactNumber = Long.parseLong(contactNumber);
-		this.cnic = Long.parseLong(cinic);
-		this.age = Integer.parseInt(age);
+		this.contact = Long.parseLong(conatct);
+		this.cnic = Long.parseLong(cnic);
+		this.imagePath = imagePath;
+	}
+	public String getName() {
+		return name;
+	}public long getContact() {
+		return contact;
+	}public long getCnic() {
+		return cnic;
+	}public String getImagePath() {
+		return imagePath;
 	}
 }
